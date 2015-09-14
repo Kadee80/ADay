@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script src="js/validate.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+  <div data-role="page">
+  <script>
+  setTimeout(function(){ setInfo('river-wind', 'school-wind', 'site-wind', 'lat-wind','lon-wind','date-wind'); }, 0100);
+
+
+
+    
+
+  </script>
+
+  <div data-role="popup" id="info-wind" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>DID YOU KNOW</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>
+    Wind levels can increase choppiness in the water. This can add oxygen and increase saturation levels. Wind can affect movement on the water surface, which makes assesing currents more difficult.
+    </p>
+        
+        <fieldset class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div> 
+            <div class="ui-block-c"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a></div>     
+        </fieldset>
+    
+    </div>
+</div>
+
+
+
+
+
+
+<div data-role="popup" id="materials-wind" data-overlay-theme="b" data-theme="b" data-dismissible="true" data-transition="flip" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>MATERIALS</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>You will need:</p>
+        <ul>
+        <li>Clipboards</li>
+        <li>Writing Materials</li>
+        <li>A Timing Device</li>
+        <li>Anemometer</li>
+        <li>Compass</li>
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+<div data-role="popup" id="procedure-wind" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>PROCEDURE</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <ul>
+        <li>Record weather wind direction at the start of sampling.</li>
+        <li>If possible, record each hour of sampling.</li>
+        
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+
+<div data-role="header">
+
+      <img src="img/icons/white/group1.png" class="headerImg"/>
+      <h1 style="text-align:left; margin-left:50px;">Wind Direction and Speed</h1>
+      <a data-iconpos="notext" href="group1.html" data-role="button" data-icon="back" class="ui-btn-right" data-transition="flip"></a>
+
+
+      <div data-role="navbar" style="height:40px; overflow:hidden;">
+      <ul>
+        <li ><a href="#info-wind" data-icon="didknow" data-rel="popup"  data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+        <li ><a href="#materials-wind" data-icon="materials" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+        <li><a href="#procedure-wind" data-icon="procedure" data-rel="popup" data-position-to="window" data-transition="flip"  data-theme="b" data-iconpos="bottom"></a></li>
+      </ul>
+    </div>
+    </div>
+
+   <div data-role="content" role="main">
+    
+
+
+<form id="windForm">
+
+<input type="hidden"  name="river-wind" id="river-wind">
+<input type="hidden"  name="school-wind" id="school-wind">
+<input type="hidden"  name="site-wind" id="site-wind">
+<input type="hidden"  name="lat-wind" id="lat-wind">
+<input type="hidden"  name="lon-wind" id="lon-wind">
+<input type="hidden"  name="date-wind" id="date-wind">
+
+<em>Water Surface:</em>
+<fieldset class="container_12" >
+<div class="grid_6">
+<input type="radio" name="water-surface" data-theme="c"  id="water-surface-choppy" value="choppy" />
+    <label for="water-surface-choppy"><small>Choppy</small></label>
+<input type="radio" name="water-surface" data-theme="c" id="water-surface-rippled" value="rippled" />
+    <label for="water-surface-rippled"><small>Rippled</small></label>
+    </div>
+      
+   <div class="grid_6">
+      <input type="radio" name="water-surface" data-theme="c"  id="water-surface-calm" value="calm"  />
+    <label for="water-surface-calm"><small>Calm</small></label>
+ 
+    <input type="radio" name="water-surface" data-theme="c" id="water-surface-flat" value="flat" />
+    <label for="water-surface-flat"><small>Flat</small></label>
+    </div>
+</fieldset>
+
+<em>Wind Speed:</em>
+<fieldset class="container_12" >
+<div class="grid_4">
+<input type="number"  name="wind-speed" id="wind-speed" placeholder="0"  min="0" step="0.01" onChange=""/></div>
+<div class="grid_4"><input type="radio" name="wind-unit" data-theme="c"  id="wind-unit-mph" value="mph" />
+    <label for="wind-unit-mph"><small>MPH</small></label></div>
+<div class="grid_4"><input type="radio" name="wind-unit" data-theme="c"  id="wind-unit-kts" value="kts" />
+    <label for="wind-unit-kts"><small>KTS</small></label></div>
+</fieldset>
+<hr>
+
+
+<fieldset class="container_12" >
+<div class="grid_6"><em>Beaufort Force #:</em>
+<small><br><em>(Refer to chart in workbook)</small></em></div>
+<div class="grid_3">
+<input type="number"  name="wind-kts" id="wind-kts" placeholder="0" required="true" min="0" step="0.1" onChange=""/></div>
+
+  </fieldset> 
+<hr>
+<em>Wind Direction <br><small>(Direction wind is coming from):</small></em>
+
+<div data-role="fieldcontain">
+        <select name="wind-direction" id="wind-direction" data-native-menu="false" data-theme="a">
+          <option value="North">North</option>
+          <option value="North East">North East</option>
+          <option value="East">East</option>
+          <option value="South East">South East</option>
+          <option value="South">South</option>
+          <option value="South West">South West</option>
+          <option value="West">West</option>
+          <option value="North West">North West</option>
+        </select>
+      </div>
+<hr>
+ 
+
+
+<button data-theme="e" data-iconpos="right" id="recordwind" onClick="uploadData('wind.csv', 'writeWind', 'windForm'); ">Record Data</button>
+</form>
+
+
+
+
+
+
+
+
+<!--END CONTENT-->
+      
+</body>
+</html>

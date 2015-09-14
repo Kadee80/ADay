@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script type="text/javascript" src="phonegap.js"></script>
+  <script src="app.js"></script>
+  
+</head>
+<body>
+  <div data-role="page" id="bluebg" data-theme="g">
+  <script>
+    setTimeout(function(){ populateLogin(); }, 0001);
+  </script>
+
+<div id="hero2">
+    <img src="img/school-btn.png"/>
+</div>
+      <h3 style="color:#FCCF52; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top:5px">Select Your River</h3>
+  <select id="riverSelectionBox" class="stringInfoSpacing" >
+  <option >River</option>
+  </select>
+   <br>
+      
+ <!--School based on River Selected-->
+      <h3 style="color:#FCCF52; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top:5px">Select Your School</h3>
+  <select id="schoolSelectionBox" class="stringInfoSpacing" >
+  <option  id="selectSchool" >Select Your School</option>
+  </select>
+<br>
+ <!--Site based on River Selected-->
+      <h3 style="color:#FCCF52; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-top:5px">Select Your Site</h3>
+  <select id="siteSelectionBox" class="stringInfoSpacing" >
+  <option  id="selectSite"   >Select Your Site</option>
+  </select>
+
+  <br>
+  <a href="groups.html" data-role="button" data-theme="g"  ><h1 style="text-align:center;">Continue</h1></a>
+ </div>
+<!--END CONTENT-->
+      
+</body>
+</html>

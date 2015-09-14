@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script src="js/validate.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+  <div data-role="page">
+  <script>
+  setTimeout(function(){ setInfo('river-weather', 'school-weather', 'site-weather', 'lat-weather','lon-weather','date-weather'); }, 0100);
+
+function convertToC(){
+  var myF = parseFloat(document.getElementById('degrees-F1-weather').value);
+
+  var myC = document.getElementById('degrees-C1-weather');
+  var c = Math.ceil((myF-32)*0.556 * 100) / 100;
+  myC.value = c;
+
+  
+  document.getElementById("recordWeather").disabled = false;
+}
+
+function convertToF(){
+  
+  var myC = parseFloat(document.getElementById('degrees-C2-weather').value);
+  var myF = document.getElementById('degrees-F2-weather');
+  var f = Math.ceil((myC*1.8+32) * 100) / 100;
+
+  myF.value = f;
+
+  document.getElementById("recordWeather").disabled = false;
+}
+
+
+    
+
+  </script>
+
+  <div data-role="popup" id="info-weather" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>DID YOU KNOW</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>
+      Weather Includes current conditions and recent conditions that may have an impact on the water quality of the river.
+    </p>
+        
+        <fieldset class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div> 
+            <div class="ui-block-c"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a></div>     
+        </fieldset>
+    
+    </div>
+</div>
+
+
+
+
+
+
+<div data-role="popup" id="materials-weather" data-overlay-theme="b" data-theme="b" data-dismissible="true" data-transition="flip" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>MATERIALS</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>You will need:</p>
+        <ul>
+        <li>Thermometer</li>
+        <li>Writing Materials</li>
+        <li>Clipboards</li>
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+<div data-role="popup" id="procedure-weather" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>PROCEDURE</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <ul>
+        <li>Record weather conditions at the start of sampling.</li>
+        <li>If possible, record each hour of sampling.</li>
+        <li>Ensure that your thermometer is in a shady location</li>
+        
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+
+<div data-role="header">
+
+      <img src="img/icons/white/group1.png" class="headerImg"/>
+      <h1 style="text-align:left; margin-left:50px;">Air Temperature, and Cloud Cover</h1>
+      <a data-iconpos="notext" href="group1.html" data-role="button" data-icon="back" class="ui-btn-right" data-transition="flip"></a>
+
+      <div data-role="navbar" style="height:40px; overflow:hidden;">
+      <ul>
+        <li ><a href="#info-weather" data-icon="didknow" data-rel="popup"  data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+        <li ><a href="#materials-weather" data-icon="materials" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+        <li><a href="#procedure-weather" data-icon="procedure" data-rel="popup" data-position-to="window" data-transition="flip"  data-theme="b" data-iconpos="bottom"></a></li>
+      </ul>
+    </div>
+    </div>
+
+   <div data-role="content" role="main">
+    
+
+
+<form id="weatherForm">
+
+<input type="hidden"  name="river-weather" id="river-weather">
+<input type="hidden"  name="school-weather" id="school-weather">
+<input type="hidden"  name="site-weather" id="site-weather">
+<input type="hidden"  name="lat-weather" id="lat-weather">
+<input type="hidden"  name="lon-weather" id="lon-weather">
+<input type="hidden"  name="date-weather" id="date-weather">
+
+<em>Cloud Cover:</em>
+
+
+<input type="radio" name="cloud-cover" data-theme="c"  id="could-cover-clear" value="clear" />
+    <label for="could-cover-clear"><small>Clear (0-25%)</small></label>
+<input type="radio" name="cloud-cover" data-theme="c" id="cloud-cover-mostly" value="mostly" />
+    <label for="cloud-cover-mostly"><small>Mostly Cloudy (50-75%)</small></label>
+
+      <input type="radio" name="cloud-cover" data-theme="c"  id="cloud-cover-partly" value="partly"  />
+    <label for="cloud-cover-partly"><small>Partly Cloudy (25-50%)</small></label>
+ 
+    <input type="radio" name="cloud-cover" data-theme="c" id="cloud-cover-overcast" value="overcast" />
+    <label for="cloud-cover-overcast"><small>Overcast (75-100%)</small></label>
+
+<hr>
+
+<em>Air Temperature &#176;F:</em>
+
+<fieldset class="container_12" >
+<div class="grid_2"><input type="number"  name="degrees-F1-weather" id="degrees-F1-weather" required="true" placeholder="0" required="true"  step="0.01"/></div>
+<div class="grid_6"><p>(&#176;F -32) * 0.556 &nbsp; = </p></div>
+<div class="grid_2"><input type="number"  name="degrees-C1-weather" id="degrees-C1-weather"  placeholder="0" required="true" step="0.01"/></div>
+<div class="grid_2"><p>&#176;C</p></div>
+
+</fieldset>
+<a  data-role="button"  data-theme="a"  id="calculate" onclick="convertToC();">Convert &#176;F &rarr; &#176;C</a>
+<hr>
+
+<em>Air Temperature &#176;C:</em>
+
+<fieldset class="container_12" >
+<div class="grid_2"><input type="number"  name="degrees-C2-weather" id="degrees-C2-weather" required="true" placeholder="0" required="true"  step="0.01"/></div>
+<div class="grid_6"><p>(&#176;C * 1.8) + 32 &nbsp; = </p></div>
+<div class="grid_2"><input type="number"  name="degrees-F2-weather" id="degrees-F2-weather" placeholder="0" required="true" step="0.01"/></div>
+<div class="grid_2"><p>&#176;F</p></div>
+
+</fieldset>
+<a  data-role="button"  data-theme="a"  id="calculate" onclick="convertToF();">Convert &#176;C &rarr; &#176;F</a>
+
+<hr>
+
+
+
+
+
+<button data-theme="e" data-iconpos="right" disabled="true" id="recordWeather" onClick="uploadData('weather.csv', writeWeather, 'weatherForm'); ">Record Data</button>
+
+
+
+        </form>
+
+
+
+
+
+<!--END CONTENT-->
+      
+</body>
+</html>

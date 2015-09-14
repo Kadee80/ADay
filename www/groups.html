@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script type="text/javascript" src="phonegap.js"></script>
+  <script src="app.js"></script>
+
+</head>
+<body>
+<div data-role="page">
+
+  <div data-role="panel" id="navpanel1" data-theme="e" data-display="overlay" data-position="right">
+      <div data-role="controlgroup" data-corners="false">
+          <a href="#" data-role="button" data-rel="close" data-icon="delete" data-iconpos="notext" >Close</a>
+          <a href="#" data-role="button">Group 1</a>
+          <a href="#" data-role="button">Group 2</a>
+          <a href="#" data-role="button">Group 3</a>
+          <a href="#" data-role="button">Group 4</a>
+          <a href="#" data-role="button">Group 5</a>
+         
+      </div>
+  </div>
+
+    <div data-role="header">
+
+      <img src="img/icons/white/team.png" class="headerImg"/>
+      <h1 style="text-align:left; margin-left:50px;">Group Selection</h1>
+      <a data-iconpos="notext" href="login.html" data-role="button" data-icon="back" data-ajax="false" class="ui-btn-right"></a>
+    </div>
+    <h1 class="page-title green"><em>Choose Your Group</em></h1>
+
+   <div data-role="content" role="main">
+   
+   <ul data-role="listview" data-inset="false" data-theme="c">
+          <li style="border-bottom:1px solid #cddb2c"><a href="group1.html" data-transition="slideup">
+            <img src="img/icons/blue/group1.png" />
+            <h3>Group 1</h3>
+            <p>- Physical Data</p></a>
+          </li>
+
+          <li style="border-bottom:1px solid #cddb2c"><a href="group2.html" data-transition="slideup">
+            <img src="img/icons/blue/group2.png" />
+            <h3>Group 2</h3>
+            <p>- Site Description</p></a>
+          </li>
+          <li style="border-bottom:1px solid #cddb2c"><a href="group3.html" data-transition="slideup">
+            <img src="img/icons/blue/group3.png"/>
+            <h3>Group 3</h3>
+            <p>- Biological Sampling</p></a>
+          </li>
+           <li style="border-bottom:1px solid #cddb2c"><a href="group4.html" data-transition="slideup">
+            <img src="img/icons/blue/group4.png"/>
+            <h3>Group 4</h3>
+            <p>- Chemical Analysis</p></a>
+          </li>
+          <li><a href="group5.html" data-transition="slideup">
+            <img src="img/icons/blue/group5.png"/>
+            <h3>Group 5</h3>
+            <p>- Documentation</p></a>
+          </li>
+
+         </ul>
+     
+  </div>
+</div>
+
+
+
+<!--END CONTENT-->
+      
+</body>
+</html>

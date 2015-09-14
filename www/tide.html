@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script src="js/validate.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+  <div data-role="page">
+  <script>
+  setTimeout(function(){ setInfo("river", "school","site","lat", "lon", "date"); }, 0100);
+
+  setTimeout(function(){ 
+        $('#tideForm').validate({
+        onkeyup: function(element) {
+            this.element(element);
+            console.log('onkeyup fired');
+        },
+        onfocusout: function(element) {
+            this.element(element);
+            console.log('onfocusout fired');
+        }
+    });
+   }, 001);
+
+
+
+    function updateMin(val){
+    var myMin = parseFloat(val);
+    var tmin = document.getElementById("minutes");
+    var mySec = document.getElementById("time-elapsed-s").value;
+    document.getElementById("rate").value="";
+    document.getElementById("record").disabled = true;
+
+    mySec = parseFloat(mySec);
+    if (isNaN(mySec)){
+      mySec= 0;     
+    }
+    mySec = (mySec/60);
+    tmin.value = myMin + mySec;
+  }
+
+  function updateSec(val){
+    var tmin = document.getElementById("minutes");
+    var myMin = parseFloat(document.getElementById("time-elapsed-m").value);
+
+    document.getElementById("rate").value="";
+    document.getElementById("record").disabled = true;
+    myMin = parseFloat(myMin);
+    if (isNaN(myMin)){
+      myMin= 0;
+    }
+    
+    var mySec = parseFloat(val);
+    mySec = (mySec/60);
+    mySec = Math.ceil(mySec * 100) / 100;
+    tmin.value = myMin + mySec;
+  }
+
+  function updateCM(val){
+    var myCm = document.getElementById("centimeters");
+    myCm.value = val;
+  }
+
+  function calcTide(){
+    var cm = parseFloat(document.getElementById("centimeters").value);
+    var minutes = parseFloat(document.getElementById("minutes").value);
+    var rate = document.getElementById("rate");
+
+    rate.value = (Math.ceil((cm/minutes)* 100) / 100);
+    //rate.value = cm/minutes;
+    //alert(rate.value);
+    if (rate.value !=="NaN"){
+    document.getElementById("record").disabled = false;
+    }else{
+      alert("Fill out all required fields");
+    }
+
+  }
+
+
+    
+
+  </script>
+
+  <div data-role="popup" id="info" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>DID YOU KNOW</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>The tide is the up and down motion of the water, the rising and falling. The tides are the result of gravity of the moon on the earth.</p>
+        
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+
+
+
+
+
+<div data-role="popup" id="materials" data-overlay-theme="b" data-theme="b" data-dismissible="true" data-transition="flip" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>MATERIALS</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>You will need:</p>
+        <ul>
+        <li>Timing Device</li>
+        <li>Clipboards</li>
+        <li>Writing Materials</li>
+        <li>2 Long, Slender, Strong Sticks</li>
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    </div>
+</div>
+
+<div data-role="popup" id="procedure" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>PROCEDURE</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <ul>
+        <li>Place first stick standing up exactly at the waters edge.</li>
+        <li>Check your tide marker every 15 minutes.</li>
+        <li>If the stick is still at the water's edge, record unchanged.</li>
+        <li>If the stick is now in the water, record rising.</li>
+        <li>If the water has receded, record falling.</li>
+        <li>If the water has moved, use the second stick to mark the new edge. Do not move first stick.</li>
+        <li>Measure the distance from the first stick to the second stick.</li>
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+      <!-- <div data-role="panel" id="navpanel1" data-theme="c" data-display="overlay" data-position="right">
+      <div data-role="controlgroup" data-corners="false">
+          <a href="#" data-role="button" data-rel="close" data-icon="delete" data-iconpos="notext" >Close</a>
+          <a href="index.html" data-role="button">Tide Measurement</a>
+          <a href="current.html" data-role="button">Current Direction + Speed</a>
+          <a href="cloudcover.html" data-role="button">Cloud Cover + Air Temperature</a>
+          <a href="#" data-role="button">Wind Direction + Speed</a>
+      </div>
+  </div> -->
+
+    <div data-role="header">
+
+      <img src="img/icons/white/group1.png" class="headerImg"/>
+      <h1 style="text-align:left; margin-left:50px;">Tidal Measurement</h1>
+      <a data-iconpos="notext" href="group1.html" data-role="button" data-icon="back" class="ui-btn-right" data-transition="flip"></a>
+
+      <div data-role="navbar" style="height:40px; overflow:hidden;">
+      <ul>
+        <li><a href="#info" data-icon="didknow" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b"></a></li>
+        <li><a href="#materials" data-icon="materials" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b"></a></li>
+        <li><a href="#procedure" data-icon="procedure" data-rel="popup" data-position-to="window" data-transition="flip"data-theme="b" ></a></li>
+      </ul>
+    </div>
+    </div>
+
+   <div data-role="content" role="main">
+
+
+
+<form id="tideForm">
+
+<input type="hidden"  name="river" id="river">
+<input type="hidden"  name="school" id="school">
+<input type="hidden"  name="site" id="site">
+<input type="hidden"  name="lat" id="lat">
+<input type="hidden"  name="lon" id="lon">
+<input type="hidden"  name="date" id="date">
+
+<em>Time Elapsed:</em>
+<fieldset class="container_12" >
+
+    <div class="grid_4"><input type="number"  name="time-elapsed-min" id="time-elapsed-m" placeholder="0" required="true" step="1" min="0" max="100" onChange="updateMin(this.value);"/></div>
+    <div class="grid_2"><p>MIN</p></div>
+    <div class="grid_4"><input type="number"  name="time-elapsed-sec" id="time-elapsed-s" placeholder="0" required="true" step="1" min="0" max="59"onChange="updateSec(this.value);"/></div>
+    <div class="grid_2"><p>SEC</p></div>
+</fieldset>
+
+<hr>
+<em>Distance From Waters Edge to Stick:</em>
+<fieldset class="container_12" >
+   
+
+    <div class="grid_4"><input type="number"  name="distance-cm" id="distance-cm" placeholder="0" required="true" step="0.1" onChange="updateCM(this.value);"/></div>
+    <div class="grid_4"><p>CM</p></div>
+    
+</fieldset>
+<hr>
+
+<em>Tidal Direction</em>
+<div class="ui-grid-b">
+
+    <div class="ui-block-a"><div class="ui-bar ui-bar-x" style="height:50px; padding:0;" >
+      <input type="radio" name="tide-direction" data-theme="c"  id="tide-direction-r" value="rising" />
+    <label for="tide-direction-r"><small>Rising</small></label>
+    </div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-x"  style="height:50px; padding:0;">
+      <input type="radio" name="tide-direction" data-theme="c"  id="tide-direction-f" value="falling"  />
+    <label for="tide-direction-f"><small>Falling</small></label>
+    </div></div>
+    <div class="ui-block-c"><div class="ui-bar ui-bar-x" style="height:50px; padding:0;">
+      <input type="radio" name="tide-direction" data-theme="c" id="tide-direction-u" value="unchanged" /><br>
+    <label for="tide-direction-u"><small>Unchanged</small></label>
+    </div></div>
+</div><!-- /grid-b -->
+
+
+<hr>
+<em>Calculate Rate of Tidal Change (CM/MIN):</em>
+<fieldset class="container_12" >
+  <div class="grid_2"><input type="text" name="centimeters" id="centimeters"/></div>
+  <div class="grid_2"><p class="equation">&nbsp;CM &nbsp;&divide;</p></div>    
+  <div class="grid_2"><input type="text" name="minutes" id="minutes" /></div> 
+  <div class="grid_2"><p class="equation" >&nbsp;MIN &nbsp;=&nbsp;</p></div> 
+  <div class="grid_2"><input type="text" name="rate" id="rate"/></div>
+  <div class="grid_2"><p class="equation" >CM/MIN</p></div>  
+</fieldset>
+<hr>
+
+<fieldset class="container_12" >
+<div class="grid_6">
+<a href="#" data-role="button" data-theme="b" data-iconpos="right" id="calculate" onclick="calcTide();">Calculate</a>
+</div>
+<div class="grid_6">
+
+<button data-theme="e" data-iconpos="right" disabled="true" id="record" onClick="recordTide(); ">Record Data</button>
+</div>
+</fieldset>
+<!-- <input type="submit" data-icon="flat-new"  data-theme="a" data-iconpos="right"  id="record"  value="Submit Button" disabled/> -->
+</form>
+
+    
+
+
+
+
+<!--END CONTENT-->
+      
+</body>
+</html>

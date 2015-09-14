@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mobile-fluid960.css" />
+  <script src="js/validate.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+  <div data-role="page">
+  <script>
+  setTimeout(function(){ setInfo("river-current", "school-current", "site-current", "lat-current", "lon-current", "date-current"); }, 0100);
+
+function calcSpeed(val){
+    var cm = parseFloat(val);
+    var myCm = document.getElementById("cm-per-60-sec");
+    myCm.value = cm;
+    var mySpeed = document.getElementById("cm-sec");
+    var mySpeed2 = document.getElementById("cm-sec2");
+    mySpeed.value = Math.ceil(cm/60 * 100) / 100;
+    mySpeed2.value = Math.ceil(cm/60 * 100) / 100;
+  }
+
+  function calcKnots(){
+    var speed = parseFloat(document.getElementById("cm-sec2").value);
+    var knots = document.getElementById("knots");
+
+    knots.value = (Math.ceil((speed/51.44)* 1000) / 1000);
+    //rate.value = cm/minutes;
+    document.getElementById("recordCurrent").disabled = false;
+
+  }
+
+function recordCurrent(){
+    //backupData("current.csv", writeTide);
+    data= $(currentForm).serialize();
+   
+    alert(data);
+
+    return false;
+}
+    
+
+  </script>
+
+  <div data-role="popup" id="info-current" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>DID YOU KNOW</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>Currents are the internal movement of the water sometimes described as the push and pull in the river. The current moving down river towards the bay is called the ebb, if it moves upstream it is called the flood.</p>
+
+<p>Do not confuse the direction of waves with the current - they are different. On a windy day the current and the waves can move in opposite directions.</p>
+
+<p><em>HINT: You are usuing a stick or an orange instead of a float or water bottle because they are biodegradable. If you can recover the objects you use please do.</em></p>
+        
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+
+
+
+
+
+<div data-role="popup" id="materials-current" data-overlay-theme="b" data-theme="b" data-dismissible="true" data-transition="flip" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>MATERIALS</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <p>You will need:</p>
+        <ul>
+        <li>Several floatable objects, such as oranges or sticks</li>
+        <li>Clipboards</li>
+        <li>Writing Materials</li>
+        <li>A Timing Device</li>
+        <li>Surveyors' Tape</li>
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+<div data-role="popup" id="procedure-current" data-overlay-theme="b" data-theme="b" data-dismissible="true" >
+    <div data-role="header" data-theme="a">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <h1>PROCEDURE</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <ul>
+        <li>Every 30 Minutes toss a stick or orange into the river and note the direction of travel.</li>
+        <li>Record ebb tide, flood tide, or slack tide if there is no movement.</li>
+        <li>Recover the object for later use. Do not litter.</li>
+        <li>To calculate speed use a measuring tape and a stopwatch.</li>
+        <li>Have one student line up with the floating objects starting point.</li>
+        <li>After the object floats for 60 seconds, line up a second student with that point.</li>
+        <li>Calculate the distance per second by dividing total distance by 60 seconds</li>
+        
+        </ul>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-e" data-rel="back" data-transition="flow">Got It! </a>
+    
+    </div>
+</div>
+
+      <!-- <div data-role="panel" id="navpanel1" data-theme="c" data-display="overlay" data-position="right">
+      <div data-role="controlgroup" data-corners="false">
+          <a href="#" data-role="button" data-rel="close" data-icon="delete" data-iconpos="notext" >Close</a>
+          <a href="index.html" data-role="button">Tide Measurement</a>
+          <a href="current.html" data-role="button">Current Direction + Speed</a>
+          <a href="cloudcover.html" data-role="button">Cloud Cover + Air Temperature</a>
+          <a href="#" data-role="button">Wind Direction + Speed</a>
+      </div>
+  </div> -->
+
+    <div data-role="header">
+
+      <img src="img/icons/white/group1.png" class="headerImg"/>
+      <h1 style="text-align:left; margin-left:50px;">Current Direction and Speed</h1>
+      <a data-iconpos="notext" href="group1.html" data-role="button" data-icon="back" class="ui-btn-right" data-transition="flip"></a>
+
+       <div data-role="navbar" style="height:40px; overflow:hidden;">
+      <ul>
+        <li><a href="#info-current" data-icon="didknow" data-rel="popup" data-position-to="window" data-transition="flip"data-theme="b" data-iconpos="bottom"></a></li>
+        <li><a href="#materials-current" data-icon="materials" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+        <li><a href="#procedure-current" data-icon="procedure" data-rel="popup" data-position-to="window" data-transition="flip" data-theme="b" data-iconpos="bottom"></a></li>
+      </ul>
+    </div>
+    </div>
+
+   <div data-role="content" role="main">
+
+
+
+<form id="currentForm">
+
+<input type="hidden"  name="river-current" id="river-current">
+<input type="hidden"  name="school-current" id="school-current">
+<input type="hidden"  name="site-current" id="site-current">
+<input type="hidden"  name="lat-current" id="lat-current">
+<input type="hidden"  name="lon-current" id="lon-current">
+<input type="hidden"  name="date-current" id="date-current">
+
+
+<label><em>Current Direction</em></label><br>
+<fieldset class="container_12">
+<div class="grid_4"><input type="radio" data-theme="c" name="current-direction"   id="current-direction-e" value="ebb" /><label for="current-direction-e"><small>Ebb</small></label></div>
+
+<div class="grid_4"><input type="radio" data-theme="c" name="current-direction"   id="current-direction-f" value="flood" /><label for="current-direction-f"><small>Flood</small></label></div>
+
+<div class="grid_4"><input type="radio" data-theme="c" name="current-direction"  id="current-direction-s" value="slack" /><label for="current-direction-s"><small>Slack</small></label></div>
+
+</fieldset>
+<br>
+<hr>      
+<label><em>Distance Traveled in 60 Seconds:</em></label>
+
+<fieldset class="container_12">
+<div class="grid_4">
+  <input type="number"  name="distance-min-current" id="centimeters" placeholder="0" required="true" min="0" step="0.1" onChange="calcSpeed(this.value);"/>
+  </div>
+  <div class="grid_2 center"><p class="unit">&nbsp;CM &nbsp;</p></div>
+  <div class="grid_6"></div>
+
+</fieldset>
+<hr>
+
+<em>Distance Per Second (CM/60):</em>
+
+<fieldset class="container_12" >
+
+  <div class="grid_3"><input type="number" name="distance-min2-current" id="cm-per-60-sec"/></div>
+  <div class="grid_3" style="text-align:center;"><p class="ui-bar-x">&nbsp;CM &nbsp;&divide; 60 =</p></div>    
+  <div class="grid_3"><input type="number" name="distance-sec-current" id="cm-sec"  min="0" step="0.001"/></div> 
+  <div class="grid_3" ><p class="ui-bar-x">&nbsp;= CM/SEC </p></div> 
+
+    </fieldset>
+<hr>
+<em>Calculate Speed in Knots (1 kt = 51.55 CM/SEC):</em>
+<fieldset class="container_12" >
+
+  <div class="grid_2"><input type="number" name="distance-sec2-current" id="cm-sec2" min="0" step="0.001"/></div>
+  <div class="grid_6" style="text-align:center;"><p class="ui-bar-x">&nbsp;CM/SEC &nbsp;&divide;&nbsp;51.44&nbsp;=</p></div>    
+  <div class="grid_2" ><input type="number" name="knots" id="knots" min="0" step="0.001"/></div> 
+  <div class="grid_2"><p class="ui-bar-x" style="text-align:center;">Knots</p></div> 
+
+    </fieldset>
+<hr>
+<fieldset class="container_12" >
+<div class="grid_6">
+<a href="#" data-role="button" data-theme="b" data-iconpos="right" id="calculate" onclick="calcKnots();">Calculate</a>
+</div>
+<div class="grid_6">
+
+<button data-theme="e" data-iconpos="right" disabled="true" id="recordCurrent" onClick="uploadCurrent();">Record Data</button>
+</div>
+</fieldset>
+</form>
+
+
+
+
+<!--END CONTENT-->
+      
+</body>
+</html>
